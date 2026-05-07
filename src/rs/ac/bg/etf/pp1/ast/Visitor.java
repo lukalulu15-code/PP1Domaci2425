@@ -1,0 +1,113 @@
+// generated with ast extension for cup
+// version 0.8
+// 20/7/2025 2:50:32
+
+
+package rs.ac.bg.etf.pp1.ast;
+
+public interface Visitor { 
+
+    public void visit(OneVarDecl OneVarDecl);
+    public void visit(Mulop Mulop);
+    public void visit(OneFormPar OneFormPar);
+    public void visit(FactorSign FactorSign);
+    public void visit(TermList TermList);
+    public void visit(StatementList StatementList);
+    public void visit(FactorList FactorList);
+    public void visit(Addop Addop);
+    public void visit(Factor Factor);
+    public void visit(DeclList DeclList);
+    public void visit(ActParsYesOrNo ActParsYesOrNo);
+    public void visit(Designator Designator);
+    public void visit(FormParsList FormParsList);
+    public void visit(OneConstDecl OneConstDecl);
+    public void visit(ConstDeclList ConstDeclList);
+    public void visit(ActParsList ActParsList);
+    public void visit(FactorActPars FactorActPars);
+    public void visit(PrintWithNum PrintWithNum);
+    public void visit(VarDeclList VarDeclList);
+    public void visit(DesignatorStatement DesignatorStatement);
+    public void visit(Statement Statement);
+    public void visit(ReturnWithExpr ReturnWithExpr);
+    public void visit(MethodVarDeclList MethodVarDeclList);
+    public void visit(MethodDeclList MethodDeclList);
+    public void visit(FormPars FormPars);
+    public void visit(MulopMod MulopMod);
+    public void visit(MulopDiv MulopDiv);
+    public void visit(MulopMul MulopMul);
+    public void visit(AddopMinus AddopMinus);
+    public void visit(AddopPlus AddopPlus);
+    public void visit(Setop Setop);
+    public void visit(DesignatorArrayName DesignatorArrayName);
+    public void visit(DesignatorArray DesignatorArray);
+    public void visit(DesignatorCasual DesignatorCasual);
+    public void visit(ActParsListEnd ActParsListEnd);
+    public void visit(ActParsListAdd ActParsListAdd);
+    public void visit(OneActPars OneActPars);
+    public void visit(ActPars ActPars);
+    public void visit(ActParsNo ActParsNo);
+    public void visit(ActParsYes ActParsYes);
+    public void visit(FactorActParsNo FactorActParsNo);
+    public void visit(FactorActParsYes FactorActParsYes);
+    public void visit(FactorHashTag FactorHashTag);
+    public void visit(FactorNew FactorNew);
+    public void visit(FactorDesignator FactorDesignator);
+    public void visit(FactorExpr FactorExpr);
+    public void visit(FactorBool FactorBool);
+    public void visit(FactorChar FactorChar);
+    public void visit(FactorNum FactorNum);
+    public void visit(FactorSignMinus FactorSignMinus);
+    public void visit(FactorSignPlus FactorSignPlus);
+    public void visit(FactorListEnd FactorListEnd);
+    public void visit(FactorListAdd FactorListAdd);
+    public void visit(Term Term);
+    public void visit(TermListEnd TermListEnd);
+    public void visit(TermListAdd TermListAdd);
+    public void visit(Expr Expr);
+    public void visit(DesignatorStatementCallFunc DesignatorStatementCallFunc);
+    public void visit(DesignatorStatementDec DesignatorStatementDec);
+    public void visit(DesignatorStatementInc DesignatorStatementInc);
+    public void visit(DesignatorStatementSetOpAssign DesignatorStatementSetOpAssign);
+    public void visit(DesignatorStatementError DesignatorStatementError);
+    public void visit(DesignatorStatementAssign DesignatorStatementAssign);
+    public void visit(ReturnWithExprNO ReturnWithExprNO);
+    public void visit(ReturnWithExprYes ReturnWithExprYes);
+    public void visit(StatementAnotherStatement StatementAnotherStatement);
+    public void visit(StatementReturn StatementReturn);
+    public void visit(StatementPrintNumYes StatementPrintNumYes);
+    public void visit(StatementPrintNumNo StatementPrintNumNo);
+    public void visit(StatementRead StatementRead);
+    public void visit(StatementDesignatorStatement StatementDesignatorStatement);
+    public void visit(StatementListNotEnd StatementListNotEnd);
+    public void visit(StatementListAdd StatementListAdd);
+    public void visit(MethodVarDeclListEmpty MethodVarDeclListEmpty);
+    public void visit(MethodVarDeclListNotEmpty MethodVarDeclListNotEmpty);
+    public void visit(FormParsListEnd FormParsListEnd);
+    public void visit(FormParsListAdd FormParsListAdd);
+    public void visit(OneFormParArray OneFormParArray);
+    public void visit(OneFormParOneD OneFormParOneD);
+    public void visit(FormParsEmpty FormParsEmpty);
+    public void visit(FormParsNotEmpty FormParsNotEmpty);
+    public void visit(MethodSignature MethodSignature);
+    public void visit(MethodDecl MethodDecl);
+    public void visit(VarDeclListEnd VarDeclListEnd);
+    public void visit(VarDeclListAdd VarDeclListAdd);
+    public void visit(OneVarDeclError OneVarDeclError);
+    public void visit(OneVarDeclArray OneVarDeclArray);
+    public void visit(OneVarDeclOneD OneVarDeclOneD);
+    public void visit(VarDecl VarDecl);
+    public void visit(ConstDeclListEnd ConstDeclListEnd);
+    public void visit(ConstDeclListAdd ConstDeclListAdd);
+    public void visit(OneConstDeclBool OneConstDeclBool);
+    public void visit(OneConstDeclChar OneConstDeclChar);
+    public void visit(OneConstDeclNumber OneConstDeclNumber);
+    public void visit(ConstDecl ConstDecl);
+    public void visit(DeclListError DeclListError);
+    public void visit(DeclListE DeclListE);
+    public void visit(DeclListVar DeclListVar);
+    public void visit(DeclListConst DeclListConst);
+    public void visit(Type Type);
+    public void visit(ProgramName ProgramName);
+    public void visit(Program Program);
+
+}
