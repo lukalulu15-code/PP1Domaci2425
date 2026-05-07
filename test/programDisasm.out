@@ -1,0 +1,573 @@
+codeSize=888
+dataSize=5
+mainPC=503
+0: enter 1 1
+3: load_0
+4: exit
+5: return
+6: enter 1 1
+9: load_0
+10: arraylength
+11: exit
+12: return
+13: enter 2 2
+16: load_0
+17: load_1
+18: dup2
+19: pop
+20: dup
+21: arraylength
+22: const_1
+23: sub
+24: dup2
+25: aload
+26: jeq 56 (=82)
+29: pop
+30: dup
+31: store_0
+32: const_0
+33: store_1
+34: dup2
+35: pop
+36: dup
+37: arraylength
+38: const_1
+39: sub
+40: aload
+41: store_2
+42: dup2
+43: pop
+44: load_1
+45: aload
+46: load_0
+47: jeq 36 (=83)
+50: load_1
+51: const_1
+52: add
+53: store_1
+54: load_1
+55: load_2
+56: jlt -14 (=42)
+59: dup2
+60: pop
+61: dup_x1
+62: dup_x1
+63: dup
+64: arraylength
+65: const_1
+66: sub
+67: aload
+68: dup_x1
+69: pop
+70: astore
+71: arraylength
+72: const_1
+73: sub
+74: dup2
+75: aload
+76: const_1
+77: add
+78: astore
+79: jmp 6 (=85)
+82: pop
+83: pop
+84: pop
+85: exit
+86: return
+87: enter 2 2
+90: load_0
+91: load_1
+92: const_0
+93: store_3
+94: dup
+95: arraylength
+96: store 4
+98: const_0
+99: store 5
+101: dup2
+102: pop
+103: dup
+104: arraylength
+105: const_1
+106: sub
+107: aload
+108: store 6
+110: dup2
+111: pop
+112: load 5
+114: aload
+115: dup2
+116: pop
+117: load_3
+118: aload
+119: jeq 53 (=172)
+122: load 5
+124: const_1
+125: add
+126: store 5
+128: load 5
+130: load 6
+132: jlt -22 (=110)
+135: dup2
+136: pop
+137: arraylength
+138: const_1
+139: sub
+140: load 6
+142: jle 43 (=185)
+145: dup2
+146: dup2
+147: pop
+148: dup
+149: arraylength
+150: const_1
+151: sub
+152: aload
+153: dup_x1
+154: pop
+155: load_3
+156: aload
+157: astore
+158: dup2
+159: pop
+160: dup
+161: arraylength
+162: const_1
+163: sub
+164: dup2
+165: aload
+166: const_1
+167: add
+168: dup
+169: store 6
+171: astore
+172: load_3
+173: const_1
+174: add
+175: store_3
+176: const_0
+177: store 5
+179: load_3
+180: load 4
+182: jlt -72 (=110)
+185: pop
+186: pop
+187: exit
+188: return
+189: enter 1 1
+192: load_0
+193: dup
+194: dup
+195: arraylength
+196: const_1
+197: sub
+198: aload
+199: store 8
+201: const_0
+202: store 7
+204: dup
+205: load 7
+207: aload
+208: const_5
+209: print
+210: load 7
+212: const_1
+213: add
+214: store 7
+216: load 7
+218: load 8
+220: jlt -16 (=204)
+223: pop
+224: exit
+225: return
+226: enter 2 2
+229: load_0
+230: load_1
+231: store 9
+233: dup
+234: dup
+235: arraylength
+236: const_1
+237: sub
+238: aload
+239: store 11
+241: const_0
+242: store 10
+244: dup
+245: load 10
+247: aload
+248: load 9
+250: print
+251: load 10
+253: const_1
+254: add
+255: store 10
+257: load 10
+259: load 11
+261: jlt -17 (=244)
+264: pop
+265: exit
+266: return
+267: enter 3 3
+270: load_0
+271: store 12
+273: load_1
+274: store 13
+276: load_2
+277: store 14
+279: load 13
+281: dup
+282: arraylength
+283: const_1
+284: sub
+285: aload
+286: load 12
+288: arraylength
+289: const_1
+290: sub
+291: jgt 173 (=464)
+294: load 12
+296: dup
+297: arraylength
+298: const_1
+299: sub
+300: const_0
+301: astore
+302: load 12
+304: load 13
+306: const_0
+307: store 7
+309: dup
+310: dup
+311: arraylength
+312: const_1
+313: sub
+314: aload
+315: store 8
+317: dup2
+318: dup2
+319: pop
+320: dup
+321: arraylength
+322: const_1
+323: sub
+324: aload
+325: dup_x1
+326: pop
+327: load 7
+329: aload
+330: astore
+331: dup2
+332: pop
+333: dup
+334: arraylength
+335: const_1
+336: sub
+337: dup2
+338: aload
+339: const_1
+340: add
+341: astore
+342: load 7
+344: const_1
+345: add
+346: store 7
+348: load 7
+350: load 8
+352: jlt -35 (=317)
+355: pop
+356: load 14
+358: const_0
+359: store 7
+361: dup
+362: dup
+363: arraylength
+364: const_1
+365: sub
+366: aload
+367: store 8
+369: const_0
+370: store_1
+371: load 12
+373: dup
+374: arraylength
+375: const_1
+376: sub
+377: aload
+378: store_2
+379: load 12
+381: load_1
+382: aload
+383: load 14
+385: load 7
+387: aload
+388: jeq 54 (=442)
+391: load_1
+392: const_1
+393: add
+394: store_1
+395: load_1
+396: load_2
+397: jlt -18 (=379)
+400: load 12
+402: dup
+403: arraylength
+404: const_1
+405: sub
+406: aload
+407: load 12
+409: arraylength
+410: const_1
+411: sub
+412: jge 50 (=462)
+415: dup2
+416: dup2
+417: pop
+418: dup
+419: arraylength
+420: const_1
+421: sub
+422: aload
+423: dup_x1
+424: pop
+425: load 7
+427: aload
+428: astore
+429: dup2
+430: pop
+431: dup
+432: arraylength
+433: const_1
+434: sub
+435: dup2
+436: aload
+437: const_1
+438: add
+439: dup
+440: store_2
+441: astore
+442: load 7
+444: const_1
+445: add
+446: store 7
+448: const_0
+449: store_1
+450: load 7
+452: load 8
+454: jlt -75 (=379)
+457: pop
+458: pop
+459: jmp 42 (=501)
+462: pop
+463: pop
+464: load 12
+466: const_0
+467: store 7
+469: dup
+470: arraylength
+471: const_1
+472: sub
+473: aload
+474: store_2
+475: load 12
+477: load 7
+479: const_0
+480: astore
+481: load 7
+483: const_1
+484: add
+485: store 7
+487: load 7
+489: load_2
+490: jlt -15 (=475)
+493: load 12
+495: dup
+496: arraylength
+497: const_1
+498: sub
+499: const_0
+500: astore
+501: exit
+502: return
+503: enter 0 10
+506: read
+507: store_3
+508: load_3
+509: const_5
+510: print
+511: const 10
+516: const_1
+517: bprint
+518: const 98
+523: neg
+524: const_5
+525: const 7
+530: mul
+531: const_2
+532: div
+533: const_0
+534: sub
+535: const 98
+540: mul
+541: add
+542: const_3
+543: const_2
+544: rem
+545: const_3
+546: const_2
+547: mul
+548: add
+549: const 7
+554: sub
+555: sub
+556: store 7
+558: load 7
+560: const_5
+561: print
+562: const 10
+567: const_1
+568: bprint
+569: const 98
+574: const_5
+575: print
+576: const 98
+581: call -581 (=0)
+584: const_1
+585: bprint
+586: const 102
+591: call -591 (=0)
+594: const_5
+595: print
+596: const_5
+597: newarray 1
+599: store 6
+601: const_4
+602: const_1
+603: add
+604: newarray 1
+606: putstatic 2
+609: const_5
+610: const_1
+611: add
+612: newarray 1
+614: putstatic 3
+617: const 10
+622: const_1
+623: add
+624: newarray 1
+626: store_0
+627: const_3
+628: const_1
+629: add
+630: newarray 1
+632: putstatic 4
+635: load 6
+637: call -631 (=6)
+640: const_5
+641: print
+642: const 10
+647: const_1
+648: bprint
+649: load 6
+651: const_0
+652: const_1
+653: astore
+654: load 6
+656: const_1
+657: const_2
+658: astore
+659: load 6
+661: const_2
+662: const_2
+663: astore
+664: load 6
+666: const_3
+667: const_4
+668: astore
+669: load 6
+671: const_4
+672: const_5
+673: astore
+674: getstatic 2
+677: load 6
+679: call -592 (=87)
+682: getstatic 2
+685: call -496 (=189)
+688: const 10
+693: const_1
+694: bprint
+695: load 6
+697: const_4
+698: aload
+699: const_5
+700: print
+701: const 10
+706: const_1
+707: bprint
+708: getstatic 3
+711: load 6
+713: const_4
+714: aload
+715: call -702 (=13)
+718: getstatic 3
+721: const 98
+726: call -713 (=13)
+729: getstatic 3
+732: const 7
+737: call -724 (=13)
+740: getstatic 3
+743: const 8
+748: call -735 (=13)
+751: getstatic 3
+754: const 9
+759: call -746 (=13)
+762: getstatic 3
+765: call -576 (=189)
+768: const 10
+773: const_1
+774: bprint
+775: load_0
+776: getstatic 2
+779: getstatic 3
+782: call -515 (=267)
+785: load_0
+786: call -597 (=189)
+789: const 10
+794: const_1
+795: bprint
+796: load_0
+797: load 6
+799: call -712 (=87)
+802: load_0
+803: const 15
+808: call -795 (=13)
+811: load_0
+812: const 18
+817: call -804 (=13)
+820: load_0
+821: const 20
+826: call -813 (=13)
+829: load_0
+830: const 99
+835: call -822 (=13)
+838: load_0
+839: call -650 (=189)
+842: const 10
+847: const_1
+848: bprint
+849: getstatic 2
+852: getstatic 3
+855: load_0
+856: call -589 (=267)
+859: getstatic 2
+862: call -673 (=189)
+865: const 10
+870: const_1
+871: bprint
+872: getstatic 4
+875: load 6
+877: call -790 (=87)
+880: getstatic 4
+883: call -694 (=189)
+886: exit
+887: return

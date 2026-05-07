@@ -1,0 +1,42 @@
+program krogram
+
+const int pi=98, z=5;
+int x,y[];
+
+set s1, s2, s4;
+
+{  
+	void main()
+	 set  s3;	
+	 int a, b;
+	 int y;
+	 char carr[], p;
+	 int niz [];
+	 int c;
+	 
+	 bool iskaz, nizIskaza [];
+	 {
+	 	niz = new int [4];
+	 	
+	 	niz[0]=1;
+	 	niz[0]=1;
+	 	niz[1]=1;
+	 	niz[2]=1;
+	 	niz[3]=1;
+	 	niz[3]=1;
+	 	niz[3]=1;
+	 	niz[3]=1;
+	 	niz[3]=1;
+	 	niz[3]=1;
+	 	niz[3]=1;
+	 	niz[3]=1;
+	 	niz[2]=1;
+	 	
+	 	print(#niz[3]);
+	 	
+	 	
+	 	
+	}
+	
+}
+
