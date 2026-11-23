@@ -5,8 +5,8 @@ Prevodi izvorni `.mj` program u bajtkod (`.obj`) koji se izvršava na MikroJava 
 
 Kompajler prolazi kroz četiri faze:
 
-1. **Leksička analiza** – JFlex (`spec/spec/mjlexer.flex`)
-2. **Sintaksna analiza** – CUP sa automatskom izgradnjom AST stabla (`spec/spec/mjparser.cup`)
+1. **Leksička analiza** – JFlex (`spec/mjlexer.flex`)
+2. **Sintaksna analiza** – CUP sa automatskom izgradnjom AST stabla (`spec/mjparser.cup`)
 3. **Semantička analiza** – obilazak AST-a i rad sa tabelom simbola (`SemanticAnalyzer.java`)
 4. **Generisanje koda** – MikroJava bajtkod (`CodeGenerator.java`)
 
@@ -73,7 +73,7 @@ Više primera se nalazi u folderu [`test/`](test/) (`program.mj`, `test301.mj`, 
 ├── build.xml          # Ant skripta (generisanje leksera/parsera, kompajliranje, pokretanje)
 ├── config/log4j.xml   # podešavanja logovanja
 ├── lib/               # JFlex, CUP, log4j, symboltable i mj-runtime biblioteke
-├── spec/spec/         # specifikacija leksera (.flex) i gramatike (.cup)
+├── spec/              # specifikacija leksera (.flex) i gramatike (.cup)
 ├── src/rs/ac/bg/etf/pp1/
 │   ├── Compiler.java          # ulazna tačka – pokreće sve faze kompajliranja
 │   ├── SemanticAnalyzer.java  # semantička analiza
