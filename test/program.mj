@@ -16,26 +16,57 @@ set s1, s2, s4;
 	 
 	 bool iskaz, nizIskaza [];
 	 {
-	 	niz = new int [4];
-	 	
-	 	niz[0]=1;
-	 	niz[0]=1;
-	 	niz[1]=1;
-	 	niz[2]=1;
-	 	niz[3]=1;
-	 	niz[3]=1;
-	 	niz[3]=1;
-	 	niz[3]=1;
-	 	niz[3]=1;
-	 	niz[3]=1;
-	 	niz[3]=1;
-	 	niz[3]=1;
-	 	niz[2]=1;
-	 	
-	 	print(#niz[3]);
-	 	
-	 	
-	 	
+	 	read(y);
+	 	print(y);
+	 	print(eol);
+	 	c = -pi + (5 * 7 / 2 - 0) * pi - (3 % 2 + 3 * 2 - 7);
+	 	print(c);
+	 	print(eol);
+	 	print(pi);
+	 	print(chr(pi));
+	 	print(ord('f'));
+	 	niz = new int [5];
+	 	s1 = new set [4];
+	 	s2 = new set[5];
+	 	s3 = new set[10];
+		s4 = new set[3];
+		print(len(niz));
+		print(eol);
+		niz[0]=1;
+		niz[1]=2;
+		niz[2]=2;
+		niz[3]=4;
+		niz[4]=5;
+		addAll(s1,niz);
+		print(s1);
+		print(eol);		
+		
+		print(niz[4]);
+		print(eol);
+		
+		add(s2,niz[4]);
+		add(s2,pi);
+		add(s2,7*5+9*5-7%5);
+		add(s2,8);
+		add(s2,9);
+		print(s2);
+		print(eol);
+		
+		s3 = s1 union s2;
+		print(s3);
+		print(eol);
+		addAll(s3,niz);
+		add(s3,15);
+		add(s3,18);
+		add(s3,20);
+		add(s3,99);
+		print(s3);
+		print(eol);
+		s1=s2 union s3;
+		print(s1);
+		print(eol);
+		addAll(s4,niz);
+		print(s4);
 	}
 	
 }

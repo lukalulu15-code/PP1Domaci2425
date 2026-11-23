@@ -56,8 +56,8 @@ public class sym_old {
 			public static final int RBRACKET=46;
 			public static final int LBRACE=47;
 			public static final int RBRACE=48;
-			public static final int HASHTAG=49;
+
 			
-			public static final int EOF=50;
+			public static final int EOF=49;
 		
 }

@@ -62,7 +62,6 @@ import java_cup.runtime.Symbol;
 "]" 		{ return new_symbol(sym.RBRACKET, yytext()); }
 "{" 		{ return new_symbol(sym.LBRACE, yytext()); }
 "}"			{ return new_symbol(sym.RBRACE, yytext()); }
-"#"			{ return new_symbol(sym.HASHTAG, yytext()); }
 
 "//" {yybegin(COMMENT);}
 <COMMENT> . {yybegin(COMMENT);}

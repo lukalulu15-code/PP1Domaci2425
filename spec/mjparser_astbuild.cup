@@ -50,7 +50,7 @@ scan with {:
 :}
 								
 terminal PROG, LBRACE, RBRACE, CONST, EQUAL, SEMI, COMMA, LBRACKET, RBRACKET, LPAREN, RPAREN, VOID, READ, PRINT, RETURN, INC, DEC, UNION;
-terminal PLUS, MINUS, MUL, DIV, MOD, NEW, HASHTAG;
+terminal PLUS, MINUS, MUL, DIV, MOD, NEW;
 terminal String IDENT;
 terminal Integer NUMBER;
 terminal Character CHAR;
@@ -227,8 +227,6 @@ Factor ::= (FactorNum)  NUMBER:N1 {: RESULT=new FactorNum(N1); RESULT.setLine(N1
 		   (FactorDesignator) Designator:D1 FactorActPars:F2 {: RESULT=new FactorDesignator(D1, F2); RESULT.setLine(D1left); :}
 		   |
 		   (FactorNew) NEW Type:T1 LBRACKET Expr:E2 RBRACKET {: RESULT=new FactorNew(T1, E2); RESULT.setLine(T1left); :}
-		   |
-		   (FactorHashTag) HASHTAG Designator:D1 {: RESULT=new FactorHashTag(D1); RESULT.setLine(D1left); :} 
 		   ;		 
 
 FactorActPars ::= (FactorActParsYes) LPAREN ActParsYesOrNo:A1 RPAREN {: RESULT=new FactorActParsYes(A1); RESULT.setLine(A1left); :}

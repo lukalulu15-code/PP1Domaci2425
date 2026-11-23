@@ -372,20 +372,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     	}
     }
     @Override
-    public void visit(FactorHashTag factorHashTag) {
-    	factorHashTag.struct = factorHashTag.getDesignator().obj.getType();
-    	if(arrayAccess==false) {
-    		report_error("Mora se pristupiti nizu ", factorHashTag);
-    	}else {
-    		report_info("DesignatorStatementNumAccessElemArray", factorHashTag);
-    		arrayAccess = false;
-    	}
-    		
-   
-    }
-    
-    
-    @Override
     public void visit (StatementRead statementRead) {
     	if(statementRead.getDesignator().obj.getKind()!=Obj.Elem && statementRead.getDesignator().obj.getKind()!=Obj.Var) {
     		report_error("Designator " + statementRead.getDesignator().obj.getName() + " mora biti element niza ili promenljiva ", statementRead);
@@ -399,9 +385,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(StatementPrintNumNo statementPrint) {
     	if(statementPrint.getExpr().struct.getKind() != Struct.Bool && statementPrint.getExpr().struct.getKind() != Struct.Char 
     		&&	statementPrint.getExpr().struct.getKind() != Struct.Int && statementPrint.getExpr().struct.getKind() != Struct.Enum) {
-    		if(statementPrint.getExpr().struct.getKind() == Struct.Array && statementPrint.getExpr().struct.getElemType().getKind() != Struct.Bool) {
-    			report_error("Expr u print statement u mora biti tipa int, char, bool ili set ", statementPrint);
-    		}
+    		report_error("Expr u print statement u mora biti tipa int, char, bool ili set ", statementPrint);
     	} else {
     		report_info("Statement print ", statementPrint);
 		printCallCount++;

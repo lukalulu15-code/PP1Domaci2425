@@ -6,20 +6,16 @@ import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
 import rs.ac.bg.etf.pp1.CounterVisitor.VarCounter;
 import rs.ac.bg.etf.pp1.ast.ActParsYes;
 import rs.ac.bg.etf.pp1.ast.AddopPlus;
-import rs.ac.bg.etf.pp1.ast.DesignatorArray;
 import rs.ac.bg.etf.pp1.ast.DesignatorArrayName;
 import rs.ac.bg.etf.pp1.ast.DesignatorCasual;
 import rs.ac.bg.etf.pp1.ast.DesignatorStatementAssign;
 import rs.ac.bg.etf.pp1.ast.DesignatorStatementCallFunc;
 import rs.ac.bg.etf.pp1.ast.DesignatorStatementDec;
 import rs.ac.bg.etf.pp1.ast.DesignatorStatementInc;
-
 import rs.ac.bg.etf.pp1.ast.DesignatorStatementSetOpAssign;
-import rs.ac.bg.etf.pp1.ast.Expr;
 import rs.ac.bg.etf.pp1.ast.FactorBool;
 import rs.ac.bg.etf.pp1.ast.FactorChar;
 import rs.ac.bg.etf.pp1.ast.FactorDesignator;
-import rs.ac.bg.etf.pp1.ast.FactorHashTag;
 import rs.ac.bg.etf.pp1.ast.FactorListAdd;
 import rs.ac.bg.etf.pp1.ast.FactorNew;
 import rs.ac.bg.etf.pp1.ast.FactorNum;
@@ -47,7 +43,6 @@ public class CodeGenerator extends VisitorAdaptor {
 	private int setOpPc=0;
 	private int printNoNumSetPc=0;
 	private int printYesNumSetPc=0;
-	private boolean arrayAccess = false; 
 	
 	public int getMainPc() {
 		return mainPc; 
@@ -673,73 +668,6 @@ public class CodeGenerator extends VisitorAdaptor {
 			int offset = printNoNumSetPc - Code.pc;
 			Code.put(Code.call);
 			Code.put2(offset);
-		} else if(statementPrintNumNo.getExpr().struct.getKind() == Struct.Array && statementPrintNumNo.getExpr().struct.getElemType().getKind() == Struct.Bool) {
-			Obj lenNiza = Tab.insert(Obj.Var, "lenNiza", new Struct(Struct.Int));
-			Obj indexNiza = Tab.insert(Obj.Var, "indexNiza", new Struct(Struct.Int));
-			Obj stepen = Tab.insert(Obj.Var, "stepen", new Struct(Struct.Int));
-			Obj adresaNiza = Tab.insert(Obj.Var, "adresaNiza", new Struct(Struct.Int));
-			Obj sumaNiza = Tab.insert(Obj.Var, "sumaNiza", new Struct(Struct.Int));
-			Code.loadConst(0);
-			Code.store(sumaNiza);
-			Code.put(Code.dup);
-			Code.put(Code.dup);
-			Code.store(adresaNiza);
-			Code.put(Code.arraylength);
-			Code.loadConst(1);
-			Code.put(Code.sub);
-			Code.put(Code.dup);
-			Code.store(lenNiza);
-			Code.store(indexNiza);
-			
-			int pcPocetakIteracije = Code.pc;
-			Code.load(adresaNiza);
-			Code.load(indexNiza);
-			Code.put(Code.aload);
-			Code.loadConst(0);
-			//Ako je vrednost 0 prelazimo na sledeci element
-			Code.putFalseJump(Code.ne, 0);
-			int jmpFirstBoolArr = Code.pc-2;
-			
-			
-			
-			Code.loadConst(1);
-			Code.load(lenNiza);
-			Code.load(indexNiza);
-			Code.put(Code.sub);
-			Code.store(stepen); //Pomeramo u levo onoliko puta koliki je stepen, ako je stepen 0 onda ide jednom u desno
-			Code.load(stepen);
-			Code.loadConst(0);
-			
-			// ako je stepen 0 onda nema shifta
-			Code.putFalseJump(Code.ne,0);
-			int jmpZaNultiStepen = Code.pc-2;
-			
-			Code.load(stepen);
-			Code.put(Code.shl);
-			
-			
-			Code.fixup(jmpZaNultiStepen);
-			
-			Code.load(sumaNiza);
-			Code.put(Code.add);
-			Code.store(sumaNiza);
-			
-			
-			Code.fixup(jmpFirstBoolArr); 
-			Code.load(indexNiza);
-			Code.loadConst(1);
-			Code.put(Code.sub);
-			Code.put(Code.dup);
-			Code.store(indexNiza);
-			Code.loadConst(0);
-			Code.putFalseJump(Code.lt,pcPocetakIteracije);
-			
-			Code.put(Code.pop);
-			
-			Code.load(sumaNiza);
-			Code.loadConst(5);
-			Code.put(Code.print);
-			
 		}
 		else if(statementPrintNumNo.getExpr().struct == Tab.intType || statementPrintNumNo.getExpr().struct.getKind() == Struct.Bool) {
 			Code.loadConst(5);
@@ -817,22 +745,9 @@ public class CodeGenerator extends VisitorAdaptor {
 
 /*	@Override
 	public void visit (DesignatorCasual designatorCasual) {
-		if(Tab.find(designatorCasual.getI1()).getType().getKind()==Struct.Array)
-			Code.load(designatorCasual.obj);
-	} */  
-	@Override
-    public void visit(FactorHashTag factorHashTag) {
-		
-		Code.put(Code.dup2);
-		Code.put(Code.pop);
-		Code.put(Code.arraylength);
-		Code.loadConst(2);
-		Code.put(Code.div);
-		Code.put(Code.add);
-		Code.put(Code.aload);
-		Code.loadConst(1);
-		Code.put(Code.sub);
-	}
+		Code.load(designatorCasual.obj);
+	} 
+*/
 	@Override
 	public void visit(FactorNew factorNew) {
 		if(factorNew.getType().getI1().contentEquals("set")) {
@@ -840,8 +755,6 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.add);
 			Code.put(Code.newarray);
 		} else {
-			Code.loadConst(2);
-			Code.put(Code.mul);
 			Code.put(Code.newarray);
 		}
 		if(factorNew.getType().struct.equals(Tab.charType)) {
@@ -853,29 +766,7 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	@Override
 	public void visit(DesignatorArrayName designatorArrayName) {
-		arrayAccess = true;
 		Code.load(designatorArrayName.obj);
-	}
-	@Override 
-	public void visit(Expr expr) {
-		if(arrayAccess== true) {
-			Code.put(Code.dup2);
-			Code.put(Code.dup2);
-			Code.put(Code.pop);
-			Code.put(Code.arraylength);
-			Code.loadConst(2);
-			Code.put(Code.div);
-			Code.put(Code.add);
-			Code.put(Code.dup2);
-			Code.put(Code.aload);
-			Code.loadConst(1);
-			Code.put(Code.add);
-			Code.put(Code.astore);
-		}
-	}
-	@Override
-	public void visit(DesignatorArray designatorArray) {
-		arrayAccess =  false;
 	}
 	@Override
 	public void visit(DesignatorStatementAssign designatorStatementAssign) {
@@ -962,6 +853,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		
 	}
 
+	
 	
 	
 }

@@ -50,7 +50,7 @@ scan with {:
 :}
 								
 terminal PROG, LBRACE, RBRACE, CONST, EQUAL, SEMI, COMMA, LBRACKET, RBRACKET, LPAREN, RPAREN, VOID, READ, PRINT, RETURN, INC, DEC, UNION;
-terminal PLUS, MINUS, MUL, DIV, MOD, NEW, HASHTAG;
+terminal PLUS, MINUS, MUL, DIV, MOD, NEW;
 terminal String IDENT;
 terminal Integer NUMBER;
 terminal Character CHAR;
@@ -207,8 +207,6 @@ Factor ::= (FactorNum)  NUMBER
 		   (FactorDesignator) Designator FactorActPars
 		   |
 		   (FactorNew) NEW Type LBRACKET Expr RBRACKET
-		   |
-		   (FactorHashTag) HASHTAG Designator 
 		   ;		 
 
 FactorActPars ::= (FactorActParsYes) LPAREN ActParsYesOrNo RPAREN
