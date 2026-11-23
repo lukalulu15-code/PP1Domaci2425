@@ -1,0 +1,11 @@
+# kompajlirane Java klase (prave se same kad se pokrene build)
+*.class
+bin/
+
+# log fajlovi kompajlera
+logs/
+
+# Eclipse podešavanja (specifična za računar)
+.project
+.classpath
+.settings/
