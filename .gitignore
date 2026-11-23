@@ -9,3 +9,8 @@ logs/
 .project
 .classpath
 .settings/
+
+# izlazi koji nastaju pokretanjem kompajlera i MJ VM (test/*.obj, *.out, *.err)
+test/*.obj
+test/*.out
+test/*.err

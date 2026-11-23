@@ -1,8 +1,0 @@
-ERROR 16:49:36,912 - 
-Sintaksna greska na liniji 5
-ERROR 16:49:36,913 - Izvrsen oporavak od greske do , ili ; na liniji 5
-ERROR 16:49:36,930 - 
-Sintaksna greska na liniji 25
-ERROR 16:49:36,930 - Izvrsen oporavak od greske do ; na liniji 2
-ERROR 16:49:36,979 - Vec postoji promenljiva ili const za datim nazivom z na liniji 4
-ERROR 16:49:36,980 - Designator var nije prethodno definisan nema  na liniji 20
