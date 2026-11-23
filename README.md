@@ -1,60 +1,60 @@
-# MikroJava kompajler
+# MicroJava Compiler
 
-Kompajler za jezik **MikroJava**, urađen kao projekat iz predmeta *Programski prevodioci 1* (ETF Beograd).
-Prevodi izvorni `.mj` program u bajtkod (`.obj`) koji se izvršava na MikroJava virtuelnoj mašini.
+A compiler for the **MicroJava** language, built as a project for the *Compiler Construction 1* course (Programski prevodioci 1) at the School of Electrical Engineering, University of Belgrade (ETF).
+It translates a `.mj` source program into bytecode (`.obj`) that runs on the MicroJava virtual machine.
 
-Kompajler prolazi kroz četiri faze:
+The compiler has four phases:
 
-1. **Leksička analiza** – JFlex (`spec/mjlexer.flex`)
-2. **Sintaksna analiza** – CUP sa automatskom izgradnjom AST stabla (`spec/mjparser.cup`)
-3. **Semantička analiza** – obilazak AST-a i rad sa tabelom simbola (`SemanticAnalyzer.java`)
-4. **Generisanje koda** – MikroJava bajtkod (`CodeGenerator.java`)
+1. **Lexical analysis**: JFlex (`spec/mjlexer.flex`)
+2. **Syntax analysis**: CUP with automatic AST construction (`spec/mjparser.cup`)
+3. **Semantic analysis**: AST traversal and symbol table management (`SemanticAnalyzer.java`)
+4. **Code generation**: MicroJava bytecode (`CodeGenerator.java`)
 
-## Podržane jezičke konstrukcije
+## Supported language features
 
-- Deklaracije konstanti (`int`, `char`, `bool`) i promenljivih, uključujući nizove
-- Globalne i lokalne promenljive, metoda `void main()`
-- Aritmetički izrazi: `+`, `-`, `*`, `/`, `%`, unarni minus, zagrade
-- Dodela, inkrement `++` i dekrement `--`
-- `read(...)` i `print(...)` (uz opcionu širinu ispisa: `print(x, 5)`)
-- Alokacija nizova: `new int[n]`, `new char[n]`, ...
-- Ugrađene funkcije: `ord`, `chr`, `len`
-- Komentari u jednoj liniji (`//`)
-- Oporavak od sintaksnih grešaka u deklaracijama i iskazima dodele
+- Constant declarations (`int`, `char`, `bool`) and variable declarations, including arrays
+- Global and local variables, the `void main()` method
+- Arithmetic expressions: `+`, `-`, `*`, `/`, `%`, unary minus, parentheses
+- Assignment, increment `++` and decrement `--`
+- `read(...)` and `print(...)`, with an optional print width: `print(x, 5)`
+- Array allocation: `new int[n]`, `new char[n]`, ...
+- Built-in functions: `ord`, `chr`, `len`
+- Single-line comments (`//`)
+- Recovery from syntax errors in declarations and assignment statements
 
-### Tip `set` (skup celih brojeva)
+### The `set` type (set of integers)
 
-Kao proširenje jezika, podržan je tip `set`:
+As a language extension, the compiler supports a `set` type:
 
-| Konstrukcija            | Značenje                                         |
-|-------------------------|--------------------------------------------------|
-| `s = new set[n];`       | pravi skup kapaciteta `n`                        |
-| `add(s, x);`            | dodaje element `x` u skup (bez duplikata)        |
-| `addAll(s, niz);`       | dodaje sve elemente `int` niza u skup            |
-| `s3 = s1 union s2;`     | unija dva skupa                                  |
-| `print(s);`             | ispisuje elemente skupa                          |
+| Construct               | Meaning                                         |
+|-------------------------|-------------------------------------------------|
+| `s = new set[n];`       | creates a set with capacity `n`                 |
+| `add(s, x);`            | adds element `x` to the set (no duplicates)     |
+| `addAll(s, arr);`       | adds all elements of an `int` array to the set  |
+| `s3 = s1 union s2;`     | union of two sets                               |
+| `print(s);`             | prints the elements of the set                  |
 
-## Primer programa
+## Example program
 
 ```java
-program primer
+program example
 
 const int pi = 98;
-int niz[];
+int arr[];
 set s1, s2;
 
 {
     void main()
         set s3;
     {
-        niz = new int[3];
-        niz[0] = 1; niz[1] = 2; niz[2] = 2;
+        arr = new int[3];
+        arr[0] = 1; arr[1] = 2; arr[2] = 2;
 
         s1 = new set[4];
         s2 = new set[4];
         s3 = new set[8];
 
-        addAll(s1, niz);     // s1 = {1, 2}
+        addAll(s1, arr);     // s1 = {1, 2}
         add(s2, pi);
         add(s2, 7);          // s2 = {98, 7}
 
@@ -64,60 +64,62 @@ set s1, s2;
 }
 ```
 
-Više primera se nalazi u folderu [`test/`](test/) (`program.mj`, `test301.mj`, `test302.mj`, `test303.mj`).
+More examples are in the [`test/`](test/) folder (`program.mj`, `test301.mj`, `test302.mj`, `test303.mj`).
 
-## Struktura projekta
+## Project structure
 
 ```
 .
-├── build.xml          # Ant skripta (generisanje leksera/parsera, kompajliranje, pokretanje)
-├── config/log4j.xml   # podešavanja logovanja
-├── lib/               # JFlex, CUP, log4j, symboltable i mj-runtime biblioteke
-├── spec/              # specifikacija leksera (.flex) i gramatike (.cup)
+├── build.xml          # Ant script (lexer/parser generation, compilation, running)
+├── config/log4j.xml   # logging configuration
+├── lib/               # JFlex, CUP, log4j, symboltable and mj-runtime libraries
+├── spec/              # lexer (.flex) and grammar (.cup) specifications
 ├── src/rs/ac/bg/etf/pp1/
-│   ├── Compiler.java          # ulazna tačka – pokreće sve faze kompajliranja
-│   ├── SemanticAnalyzer.java  # semantička analiza
-│   ├── CodeGenerator.java     # generisanje bajtkoda
-│   ├── ast/                   # AST klase (generiše CUP)
-│   ├── MJParser.java, sym.java, Yylex.java   # generisani parser i lekser
+│   ├── Compiler.java          # entry point, runs all compilation phases
+│   ├── SemanticAnalyzer.java  # semantic analysis
+│   ├── CodeGenerator.java     # bytecode generation
+│   ├── ast/                   # AST classes (generated by CUP)
+│   ├── MJParser.java, sym.java, Yylex.java   # generated parser and lexer
 │   └── util/Log4JUtils.java
-├── test/              # test programi (.mj), ulaz za read (inputs.txt) i izlazi
-└── logs/              # log fajlovi kompajlera (nastaju pri pokretanju)
+├── test/              # test programs (.mj) and input for read (inputs.txt)
+└── logs/              # compiler log files (created at runtime)
 ```
 
-## Pokretanje
+Compiled `.class` files and the outputs in `test/` (`.obj`, `.out`, `.err`) are not tracked in the repository. They are created when the code is built and run.
 
-### Preduslovi
+## Getting started
 
-- Java (JDK 8 ili noviji)
-- Apache Ant (ili Eclipse sa ugrađenim Ant-om)
+### Prerequisites
 
-### 1. Generisanje leksera i parsera i kompajliranje
+- Java (JDK 8 or newer)
+- Apache Ant (or Eclipse with its built-in Ant)
+
+### 1. Generate the lexer and parser, then compile
 
 ```bash
 ant compile
 ```
 
-Ovaj target redom briše stare generisane fajlove, pokreće JFlex i CUP, ispravlja paket AST klasa i kompajlira izvorni kod.
+This target deletes old generated files, runs JFlex and CUP, fixes the AST package name and compiles the source code.
 
-### 2. Kompajliranje MikroJava programa
+### 2. Compile a MicroJava program
 
-Pokrenuti klasu `rs.ac.bg.etf.pp1.Compiler` (npr. iz Eclipse-a). Kompajler čita `test/test301.mj` i, ukoliko nema grešaka,
-upisuje bajtkod u `test/test301.obj`. Sintaksno stablo, tabela simbola i greške se ispisuju u log (`logs/mj.log`).
+Run the `rs.ac.bg.etf.pp1.Compiler` class (for example from Eclipse). The compiler reads `test/test301.mj` and, if there are no errors,
+writes the bytecode to `test/test301.obj`. The syntax tree, symbol table and errors are written to the log (`logs/mj.log`).
 
-### 3. Izvršavanje generisanog koda
+### 3. Run the generated code
 
 ```bash
 ant runObj
 ```
 
-Ovaj target najpre disasemblira `.obj` fajl (`disasm`), zatim ga pokreće u debug režimu (`debugObj`) i na kraju normalno izvršava (`runObj`).
-Ulaz za `read` naredbe se čita iz `test/inputs.txt`.
+This target first disassembles the `.obj` file (`disasm`), then runs it in debug mode (`debugObj`) and finally runs it normally (`runObj`).
+Input for `read` statements is taken from `test/inputs.txt`.
 
-## Korišćene biblioteke
+## Libraries
 
-- [JFlex](https://jflex.de/) – generator leksičkog analizatora
-- CUP (ETF verzija sa podrškom za AST) – generator parsera
-- log4j 1.2.17 – logovanje
-- `symboltable-1-1.jar` – tabela simbola
-- `mj-runtime-1.1.jar` – MikroJava VM, disasembler i `Code` klasa za generisanje koda
+- [JFlex](https://jflex.de/): lexical analyzer generator
+- CUP (ETF version with AST support): parser generator
+- log4j 1.2.17: logging
+- `symboltable-1-1.jar`: symbol table
+- `mj-runtime-1.1.jar`: MicroJava VM, disassembler and the `Code` class used for code generation
